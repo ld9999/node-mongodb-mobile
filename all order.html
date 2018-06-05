@@ -1,0 +1,147 @@
+<!doctype html>
+<html class="no-js">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="description" content="美丽说-wap首页,H5,H5首页">
+		<meta name="keywords" content="美丽说,穿搭,女装,搭配">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>订单列表-美丽说</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<link rel="icon" type="image/png" href="assets/i/mfavicon.png">
+		<link rel="stylesheet" href="assets/css/amazeui.min.css">
+		<link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/reset.css" />
+		<link rel="stylesheet" href="assets/css/all order.css">
+	</head>
+
+	<body>
+		<div class="am-container cons">
+			<div class="order-nav">
+				<a href="javascript:void(0);" class="current">全部</a>
+				<a href="javascript:void(0);">代付款</a>
+				<a href="javascript:void(0);">已付款</a>
+				<a href="javascript:void(0);">待收货</a>
+				<a href="javascript:void(0);">待评价</a>
+				<a href="javascript:void(0);">售后</a>
+			</div>
+			<div class="order-list">
+				<div class="content">
+					
+				</div>
+			</div>
+			<div class="no-order">
+				<img src="assets/img/noone.png">
+				<p>你还没有相关的订单</p>
+			</div>
+		</div>
+		<div class="abolish-box">
+			<div class="dialog" id="confirm">
+				<div class="dialog-con">这么好的宝贝，确定不要了吗？</div>
+				<div class="dialog-btn"> 
+					<span class="cancelBtn">取消</span> 
+					<span class="sureBtn">确认</span> 
+				</div>
+			</div>
+			<div class="overlay"></div>
+		</div>
+		<script src="assets/js/jquery-1.12.4.min.js"></script>
+		<script src="assets/js/amazeui.min.js"></script>
+		<script src="assets/js/all order.js"></script>
+		<script src="assets/js/template-web.js" type="text/javascript"></script>
+		<script type="text/html" id="orderList">
+		{{each data}}	
+			{{each $value.goodsId}}	
+				<ul class="order-info">
+					<li class="orderId">
+						<input type="hidden" name="goodsID" class="goodsID" value="{{$value._id}}" />
+						<div class="shop am-cf">  
+							<a href="javascript:void(0);" class="am-fl">{{$value.brand}}</a>  
+							<span class="am-fr close">交易关闭</span> 
+						</div>
+					</li>
+					<li class="good-info">
+						<a href="javascript:void(0);" class="good-info-list">
+							<div class="img-box am-fl">
+								<img src="{{$value.mdImg}}"/>
+							</div>
+							<div class="explain am-fl">
+								<p class="title">{{$value.name}}</p>
+								<p class="attribute"> 颜色：白色  尺码：M  </p>
+							</div>
+							<div class="price-box am-fr"> 
+								<span class="num"></span>
+								<span class="price"> 
+									<del>￥{{$value.marketPrice}}</del><br> ￥{{$value.price}}
+								</span> 
+							</div>
+						</a>
+					</li>
+					<li>
+						<div class="pay">
+							<p class="total">
+								<span>全国包邮 总计:</span>
+								<span class="fc-red">￥
+									<span></span>
+								</span>
+							</p>
+							<div class="order_btn">
+								<div class="btn btn-cancel">取消订单</div>
+								<div class="btn btn-primary">立即付款</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			{{/each}}
+		{{/each}}	
+		</script>
+		<script type="text/javascript">
+			var uid = sessionStorage.uid;
+			$.getJSON("/api/goodsCollect",{account:uid},function (result) {
+				if (result.status) {
+					var mid = result.data._id
+					$.getJSON("/api/order/findUser/",{accountId:mid},function (result) {
+						console.log(result)
+						if (result.data.length==0) {
+							$(".order-list").hide()
+							$(".no-order").show()
+						}
+ 						if (result.data.length!=0) {
+ 							$(".order-list").show();
+	   					$(".no-order").hide();
+ 							//购买的商品模板
+ 							var orderList = template("orderList", result);
+							$(".content").html(orderList);
+ 							var datas = result.data
+ 							var arrs = []
+ 							for (var i = 0; i < datas.length; i++) {
+ 								arrs.push(datas[i].trolleyId[i])
+ 								if (arrs[i]==undefined||NaN||null) {
+ 									arrs.splice(i, 1);
+// 									i-=1;
+ 								}
+ 								console.log(arrs)
+ 							}
+//							$(".order-list").on("click",".btn-cancel",function () {
+//								var parent = $(this).parents(".order-info");
+//								var goodsID = parent.find(".goodsID").val();
+//								console.log(parent.index())
+//								parent.remove()
+//								var goodsId = result.data.goodsId[parent.index()].
+//								console.log(goodsId)
+//								$.post("/api/trolley/goodsRemove/",{goodsId:goodsID},function (result) {
+//									if (result.status) {
+// 										parent.remove()
+//									}
+//								})
+//							})
+ 						}
+ 					})
+				}
+			})
+		</script>
+	</body>
+
+</html>	

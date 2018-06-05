@@ -1,0 +1,152 @@
+<!doctype html>
+<html class="no-js">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="description" content="美丽说-wap首页,H5,H5首页">
+		<meta name="keywords" content="美丽说,穿搭,女装,搭配">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>美丽说</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<link rel="icon" type="image/png" href="assets/i/mfavicon.png">
+		<link rel="stylesheet" type="text/css" href="assets/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="assets/css/amazeui.min.css">
+		<link rel="stylesheet" href="assets/css/order.css">
+	</head>
+	
+	<body>
+		<div class="am-container cons">
+			<div class="navs">
+				<div class="return">
+					<i class="am-inline-block"></i>
+				</div>
+				<a class="am-inline-block exit" href="all order.html">我的订单</a>
+				<div class="centers">
+					<a href="javascript:void(0);">订单确认</a>
+				</div>
+			</div>
+			<div class="address-box">
+				<b></b>
+				<div class="goodsAddress">
+					
+				</div>
+				<b></b>
+				<span class="arrow"></span>
+			</div>
+			<div class="content">
+				<div id="contentList">
+					
+				</div>
+				<div class="orderSub">
+					
+				</div>
+			</div>
+			<div class="no-order">
+				<img src="assets/img/noone.png">
+				<p>您还没有相关的订单</p>
+			</div>
+		</div>
+		<script src="assets/js/jquery-1.12.4.min.js"></script>
+		<script src="assets/js/amazeui.min.js"></script>
+		<script src="assets/js/details.js"></script>
+		<script src="assets/js/template-web.js" type="text/javascript"></script>
+		<script type="text/html" id="goodsAddress">
+			<p class="name">收件人：{{realName}}
+				<i>{{mobile}}</i>
+			</p>
+			<p class="address">{{address}}</p>
+		</script>
+		<script type="text/html" id="goodsInfo">
+		{{each data.goodsId}}
+			<ul class="goods-list">
+				<li>
+					<a href="javascript:void(0);" class="shop am-fl">
+						<img src="{{$value.mdImg}}" class="pic"/>
+						<span>{{$value.brand}}</span>
+					</a>
+					<a href="service.html" class="im am-fr">联系商家</a>
+				</li>
+				<li class="skuList">
+					<a href="javascript:void(0);" class="goods-pic am-fl">
+						<img src="{{$value.mdImg}}"/>
+					</a>
+					<div class="detail">
+						<h3 class="title"> 
+							<a href="javascript:void(0);">{{$value.name}}</a> 
+						</h3>
+						<p class="size"> 
+							<span>颜色：白色</span> 
+							<span>尺码：M</span> 
+						</p>
+						<p class="price"> 
+							<span>¥{{$value.price}}</span> 
+							<del>¥{{$value.marketPrice}}</del> 
+							<b class="num am-fr">x{{data.sales}}</b> 
+						</p>
+					</div>
+				</li>
+				<li class="sendStyle"> 配送方式：
+					<span class="am-fr">全国包邮</span>
+				</li>
+				<li> 快递运费：<span class="am-fr">￥0.00</span> </li>
+				<li> 价格合计： <span class="am-fr f-red">￥{{data.allTotal}}</span> </li>
+				<li> <input type="text" placeholder="给卖家留言" class="msg"> </li>
+			</ul>
+		{{/each}}
+		</script>
+		<script type="text/html" id="orderSub">
+			<p class="tips"> 
+				<img src="{{mdImg}}" alt=""/> 
+			</p>
+			<p class="btn-box"> 应付款：<span>￥{{allTotal}}</span>
+				<a href="cashier desk.html" class="subOrder">提交订单</a>
+			</p>
+		</script>
+		<script type="text/javascript">
+			var uid = sessionStorage.uid
+			var oid = sessionStorage.oid
+			$.getJSON("/api/goodsCollect",{account:uid},function (result) {
+				if (result.status) {
+					var mid = result.data._id
+					$.post("/goods/getAddress/order",{uid:mid},function (result) {
+						if (result.status) {
+							var address = template("goodsAddress", result.data);
+     					$(".goodsAddress").html(address);
+     					$.getJSON("/api/order/findUser/",{accountId:mid},function (result) {
+     						if (result.data==null) {
+     							$(".address-box").hide()
+     							$(".content").hide()
+     							$(".no-order").show()
+     						}
+     						if (result.data!=null) {
+     							$(".address-box").show()
+     							$(".content").show()
+     							$(".no-order").hide()
+     							var accountId = result.data.accountId 
+    							$.post("/api/order/findList",{_id:oid},function (result) {
+    								console.log(result)
+    								if (result.status) {
+     									//购买的商品模板
+     									var goodsInfo = template("goodsInfo", result);
+    									$("#contentList").html(goodsInfo);
+    									//总价计价模板
+    									var orderSub = template("orderSub", result.data);
+    									$(".orderSub").html(orderSub);
+    									//点击跳转
+    									$(".orderSub").on("click",".subOrder",function () {
+    										location.href = "cashier desk.html";
+    									})
+     								}
+     							})
+     						}
+     					})
+						}
+					})
+				}
+			})
+		</script>
+	</body>
+</html>

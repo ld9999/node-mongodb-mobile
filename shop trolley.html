@@ -1,0 +1,363 @@
+<!doctype html>
+<html class="no-js">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="description" content="美丽说-wap首页,H5,H5首页">
+		<meta name="keywords" content="美丽说,穿搭,女装,搭配">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>购物车</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<link rel="icon" type="image/png" href="assets/i/mfavicon.png">
+		<link rel="stylesheet" href="assets/css/amazeui.min.css">
+		<link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/reset.css" />
+		<link rel="stylesheet" href="assets/css/shop trolley.css">
+	</head>
+
+	<body>
+		<div class="am-container cons">
+			<div class="navs am-cf">
+				<div class="return am-fl">
+					<img src="assets/img/re.png" />
+				</div>
+				<a class="am-fr exit">删除</a>
+				<div class="centers">
+					<a href="shop trolley.html">购物车</a>
+				</div>
+			</div>
+			<div class="none am-hide">
+				<div class="none_info">
+					<p>您的购物车还空着呢，</p>
+					<p>美物这么多，快去看看吧～</p>
+					<a href="javascript:void(0);" class="btn">去逛逛</a>
+				</div>
+			</div>
+			<div class="cart">
+				<ul class="order_list_list">
+
+				</ul>
+			</div>
+			<div class="float_ctrl_wrap">
+				<div id="float_ctrl" class="float_ctrl">
+
+				</div>
+			</div>
+			<div class="wap_foot">
+				<div class="nav-bottom">
+					<a href="index.html" class="home">
+						<i class="bottom-icon icon-1"></i>
+						<span class="bottom-text">首页</span>
+					</a>
+					<a href="classification.html" class="classfy">
+						<i class="bottom-icon icon-2"></i>
+						<span class="bottom-text">分类</span>
+					</a>
+					<a href="shop trolley.html" class="shopcar">
+						<i class="bottom-icon icon-3"></i>
+						<span class="bottom-text text-one">购物车</span>
+					</a>
+					<a href="personal.html" class="myall">
+						<i class="bottom-icon icon-4"></i>
+						<span class="bottom-text">我的</span>
+					</a>
+				</div>
+			</div>
+		</div>
+		<script src="assets/js/jquery-1.12.4.min.js"></script>
+		<script src="assets/js/amazeui.min.js"></script>
+		<script src="assets/js/shop trolley.js"></script>
+		<script src="assets/js/template-web.js" type="text/javascript"></script>
+		<script type="text/html" id="goodsInfo">
+		{{each data}}
+			<li class="cart_list off" data-id="{{$value._id}}" data-type='{{$value.isCheck}}'>
+				<div class="shop_title order_info">
+					<div class="box_btn">
+						<input type="checkbox" checked="checked" class="select_shop" name="" id="" value="" />
+						<label for="select_1owlly"></label>
+					</div>
+					<div class="shop_name">
+						<a href="javascript:void(0);">店铺：{{$value.goodsId.brand}}</a>
+					</div>
+					<div class="fold_btn js-action">展开</div>
+					<div class="shop_tatol_price">合计
+						<span>¥</span>
+						<span class="shop_price_text">{{$value.goodsId.price*$value.sales}}</span>
+						<input type="hidden" name="total" class="total" value="" />
+					</div>
+				</div>
+				<ul class="order_goods_list">
+					<li class="goods" id="goods_1ztlypi">
+						<div class="box_btn">
+							<input type="checkbox" checked="checked" class="select_goods" name="shop[0]goods[0]" value="" />
+							<label for="select_1ztlypi"></label>
+						</div>
+						<div class="main">
+							<a href="javascript:void(0);" class="pic_wrap lazyload-img-end ic-1" style="background: url({{$value.goodsId.mdImg}});background-size: contain;"></a>
+							<div class="middle">
+								<a href="javascript:void(0);">
+									<p class="title">{{$value.goodsId.name}}</p>
+								</a>
+								<p class="prop">
+									<span class="first">颜色：＃775</span>
+									<span>规格：3.5g</span>
+								</p>
+								<div class="numBox">
+									<div class="minus"></div>
+									<input type="hidden" name="_id" value="{{$value.goodsId._id}}" class="goodsID" />
+									<input type="text" class="js-amount amount nums" data-id="{{$value._id}}" name="sales" value="{{$value.sales}}" />
+									<div class="add plus">+</div>
+									<div class="nums_mask"></div>
+								</div>
+							</div>
+							<div class="right">
+								<span>¥</span>
+								<span class="goods_price">{{$value.goodsId.price}}</span>
+								<p class="origin_price">¥{{$value.goodsId.marketPrice}}</p>
+								<div class="delete_btn" data-id="{{$value._id}}">删除</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</li>
+		{{/each}}
+		</script>
+		<script type="text/html" id="count">
+			<div class="goods_check_box">
+				<div class="box_btn">
+					<input type="checkbox" checked="checked" class="select_all" id="select_all">
+					<label for="select_all" class="secall"></label>
+				</div>
+				<span>全选</span>
+			</div>
+			<form>
+				<input type="hidden" name="data" id="form-data">
+				<input class="go_charge" checked="checked" type="button" value="去结算">
+			</form>
+			<div class="order_msg">
+				<p class="price">合计：<span></span>¥<span class="total_price"></span></p>
+				<p class="num msg">不含运费、优惠扣减</p>
+			</div>
+		</script>
+		<script type="text/javascript">
+			var mid = sessionStorage.uid;
+			function getList() {
+				$.getJSON("/api/goodsCollect", {account: mid}, function(result) {
+					if(result.status) {
+						var accountId = result.data._id
+						$.getJSON("/api/trolleyList", {accountId: accountId}, function(result) {
+							if(result.data.length==0) {
+								$(".none").removeClass("am-hide")
+								$(".cart").hide()
+								$(".float_ctrl_wrap").hide()
+							}
+							if (result.data.length!=0) {
+								var goodsInfo = template("goodsInfo", result);
+								$(".order_list_list").html(goodsInfo);
+								var count = template("count", result.data);
+								$("#float_ctrl").html(count);
+								console.log(result.msg)
+								$('.cart_list').each(function() {
+									if($(this).attr('data-type') == 'true') {
+										$(this).addClass("on").removeClass("off")
+									} else {
+										$(this).addClass("off").removeClass("on")
+									}
+								})
+								checkAll()
+								goodsNums();
+								$(".none").addClass("am-hide")
+								$(".cart").show()
+								$(".float_ctrl_wrap").show()
+							}
+						})
+					}
+				})
+			}
+			function goodsNums() {
+				var check = $(".cart_list.on");
+				var num = check.find('.nums');
+				var shopPrice = check.find('.shop_price_text');
+				var price = check.find('.goods_price');
+				var total = 0;
+				for(var i = 0; i < check.length; i++) {
+					shopPrice[i].innerText = (parseFloat(price[i].innerText) * parseFloat(num[i].value))
+					total += parseFloat(shopPrice[i].innerText)
+				}
+				parseFloat($('.total_price').text(total)).toFixed(2)
+				$('.cart_list.off').find('.shop_price_text').text(0 + ".00")
+			}
+			getList();
+			//购物车商品的数量加
+			$('.order_list_list').on("click", ".add", function() {
+				var nums = $(this).siblings('.nums');
+				if(nums.val() == "" || NaN || undefined || null) {
+					nums.val(1);
+				} else if(parseInt(nums.val()) == 99) {
+					alert('购买的商品数量不能更多了')
+				} else {
+					var parent = $(this).parents('.cart_list')
+					var id = parent.data('id');
+					//单个商品的总价
+					$.post("/api/NumsAdd/", {
+						_id: id
+					}, function(result) {
+						if(result.status) {
+							nums.val(result.data.sales + 1);
+							parent.find('.shop_price_text').text(parseInt(result.data.goodsId.price) * (result.data.sales + 1))
+							goodsNums();
+						}
+					})
+				}
+			})
+			//数量减
+			$('.order_list_list').on("click", ".minus", function() {
+				var nums = $(this).siblings('.nums');
+				if(parseInt(nums.val()) == 1) {
+					alert('商品的数量不能小于1')
+				} else if(nums.val() == "" || NaN || undefined || null) {
+					nums.val(1)
+				} else {
+					var parent = $(this).parents('.cart_list')
+					var id = parent.data('id');
+					//单个商品的总价
+					$.post("/api/NumsReduce/", {_id: id}, function(result) {
+						if(result.status) {
+							nums.val(result.data.sales - 1);
+							parent.find('.shop_price_text').text(parseInt(result.data.goodsId.price) * (result.data.sales - 1))
+							goodsNums();
+						}
+					})
+				}
+			})
+			//购物车商品的删除
+			$(".order_list_list").on("click", ".delete_btn", function() {
+				var ID = $(this).data('id');
+				var $goodsInfoId = $(this).parents(".cart_list")
+				$.post("/api/trolley/removeGoods/", {_id: ID}, function(result) {
+					if(result.status) {
+						alert(result.msg)
+						$goodsInfoId.remove()
+					}
+				})
+			})
+			//删除勾选的商品
+			$(".exit").click(function() {
+				$(".cart_list.on").each(function() {
+					var id = $(this).data('id')
+					$.getJSON('/api/cartRemove', {_id: id}, function(result) {
+						if(result.status) {
+							$('.cart_list.on').remove()
+							$('.float_ctrl_wrap').addClass('on')
+							if($('.cart_list.on').length <= 0) {
+								$('.total_price').text(0 + ".00")
+							}
+						}
+					})
+				})
+			})
+			//结算
+			$("#float_ctrl").on("click", ".go_charge", function() {
+				var trolleyId = [];
+				var goodsId = [];
+				$(".cart_list.on").each(function() {
+					trolleyId.push($(this).data("id"))
+					goodsId.push($(this).find(".goodsID").val())
+				})
+				$.getJSON("/api/goodsCollect", {account: mid}, function(result) {
+					if(result.status) {
+						var accountId = result.data._id
+						$.getJSON("/api/trolleyList", {accountId: accountId}, function(result) {
+							if(result.status) {
+								//查询勾选的商品
+								$.getJSON("/api/trolley/findCheck/", {isCheck: true}, function(result) {
+									if(result.status) {
+										console.log(result.data)
+										//订单列表创建
+										var gid=[];
+										var tid=[];
+										for(var i=0;i<result.data.length;i++){
+											gid.push(result.data[i].goodsId)
+											tid.push(result.data[i]._id)
+										}
+										var allTotal = parseFloat($('.total_price').text()).toFixed(2)
+											$.post("/api/orderList", {accountId: accountId,goodsId: gid,trolleyId: tid,allTotal: allTotal}, function(result) {
+												console.log(result)
+												if(result.status) {
+													console.log(result.msg)
+													var trolleyId = result.data.trolleyId
+													//提交订单时,将创建的订单_id存储
+													sessionStorage.oid = result.data._id
+													location.href = "order.html"
+												}
+											})
+									}
+								})
+							}
+						})
+					}
+				})
+			})
+			//商品勾选
+			$('.order_list_list').on('click', "label", function() {
+				var parents = $(this).parents('.cart_list');
+				var price = parents.find('.shop_price_text');
+				//购物车订单_id
+				var gid = parents.data('id');
+				if(parents.hasClass('on')) {
+					$.post("/api/trolley/notCheck/", {_id: gid}, function(result) {
+						if(result.status) {
+							console.log(result.msg)
+							parents.removeClass('on').addClass('off')
+							checkAll()
+							goodsNums()
+							parents.find('.shop_price_text').text(0 + ".00")
+						}
+					})
+				} else {
+					$.post("/api/trolley/Check/", {_id: gid}, function(result) {
+						if(result.status) {
+							console.log(result.msg)
+							parents.addClass('on').removeClass('off')
+							checkAll()
+							goodsNums()
+						}
+					})
+				}
+			})
+			$(".float_ctrl_wrap").on("click", ".secall", function() {
+				$(".cart_list").each(function() {
+					var gid = $(this).data('id');
+					if($(this).hasClass("on")) {
+						$.post("/api/trolley/Check/", {_id: gid}, function(result) {
+							if(result.status) {
+								console.log(result.msg)
+								$('.float_ctrl_wrap').addClass('on')
+							}
+						})
+					} else {
+						$.post("/api/trolley/notCheck/", {_id: gid}, function(result) {
+							if(result.status) {
+								console.log(result.msg)
+								$('.float_ctrl_wrap').removeClass('on')
+							}
+						})
+					}
+				})
+			})
+			//全选勾选
+			function checkAll() {
+				var a = $('.cart_list').length
+				var b = $('.cart_list.on').length
+				if(a == b) {
+					$('.float_ctrl_wrap').addClass('on')
+				} else {
+					$('.float_ctrl_wrap').removeClass('on')
+				}
+			}
+		</script>
+	</body>
+
+</html>

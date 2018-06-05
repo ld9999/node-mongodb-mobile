@@ -1,0 +1,103 @@
+<!doctype html>
+<html class="no-js">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="description" content="美丽说-wap首页,H5,H5首页">
+		<meta name="keywords" content="美丽说,穿搭,女装,搭配">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>分类</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<link rel="icon" type="image/png" href="assets/i/mfavicon.png">
+		<link rel="stylesheet" href="assets/css/amazeui.min.css">
+		<link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/reset.css" />
+		<link rel="stylesheet" href="assets/css/classification.css">
+	</head>
+
+	<body>
+		<div class="am-container cons">
+			<div class="am-cf nav">
+				<a href="index.html" class="logo am-fl"></a>
+				<input type="text" class="search am-fl" placeholder="套装" />
+				<a href="service.html" class="service am-fl"></a>
+			</div>
+			<div class="classify">
+				<div class="classify-cons">
+					<div class="title">
+						<h3>本周流行</h3>
+					</div>
+					<div class="list ">
+						<ul class="rec-show am-cf">
+							<!--<li>
+								<a href="javascript:void(0);">
+									<img src="assets/img/aa12.jpg" />
+								</a>
+								<span class="img-title clothing">服装</span>
+							</li>
+							<li>
+								<a href="javascript:void(0);">
+									<img src="assets/img/aa8.jpg"/>
+								</a>
+								<span class="img-title beauty">美妆</span>
+							</li>
+							<li>
+								<a href="javascript:void(0);">
+									<img src="assets/img/aa13.jpg"/>
+								</a>
+								<span class="img-title shoes_bags">鞋靴、箱包</span>
+							</li>-->
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="goods_list">
+
+			</div>
+			<div class="nav-bottom">
+				<a href="index.html">
+					<i class="bottom-icon icon-1"></i>
+					<span class="bottom-text" class="home">首页</span>
+				</a>
+				<a href="classification.html" class="classfy">
+					<i class="bottom-icon icon-2"></i>
+					<span class="bottom-text text-one">分类</span>
+				</a>
+				<a href="shop trolley.html" class="shopcar">
+					<i class="bottom-icon icon-3"></i>
+					<span class="bottom-text">购物车</span>
+				</a>
+				<a href="personal.html" class="myall">
+					<i class="bottom-icon icon-4"></i>
+					<span class="bottom-text">我的</span>
+				</a>
+			</div>
+		</div>
+		<script src="assets/js/jquery-1.12.4.min.js"></script>
+		<script src="assets/js/classfy.js"></script>
+		<script src="assets/js/template-web.js" type="text/javascript" charset="utf-8"></script>
+		<script id="tmpl-Commodity" type="text/html">
+			{{each data}}
+			<li>
+				<a href="category.html?id={{$value.id}}">
+					<img src="assets/img/aa12.jpg" />
+				</a>
+				<span class="img-title clothing">{{$value.name}}</span>
+			</li>
+			{{/each}}
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$.get('/api/getGoods/',{level:0},function (result) {
+					if (result.status) {
+						var html=template('tmpl-Commodity',result)
+						$('.rec-show').html(html)
+					} 
+				})
+			})
+		</script>
+	</body>
+
+</html>

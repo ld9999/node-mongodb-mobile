@@ -1,0 +1,399 @@
+<!doctype html>
+<html class="no-js">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="description" content="美丽说-wap首页,H5,H5首页">
+		<meta name="keywords" content="美丽说,穿搭,女装,搭配">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>美丽说-潮流穿搭快人一步</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<link rel="icon" type="image/png" href="assets/i/mfavicon.png">
+		<link rel="stylesheet" type="text/css" href="assets/css/reset.css" />
+		<link rel="stylesheet" href="assets/css/amazeui.min.css">
+		<link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="assets/css/shopping address.css">
+	</head>
+
+	<body>
+		<div class="am-container cons">
+			<div class="navs">
+				<div class="back-icon am-fl">
+					<img src="assets/img/re.png" / class="return">
+				</div>
+				<div class="am-fr am-text-left novel">
+					<a href="javascript:void(0);" class="adds" id="save">新增</a>
+				</div>
+				<div class="title">
+					<a href="javascript:void(0);">收货地址</a>
+				</div>
+			</div>
+			<form id="addressForm">
+				<div class="addr_list ">
+					<ul class="addrShow">
+
+					</ul>
+				</div>
+				<div class="address-msg am-hide">
+					<div class="bg-top am-text-center"></div>
+					<p class="mssg">
+						<label for="addressUser"> 
+							<input type="text" placeholder="收货人" maxlength="6" required class="addressUser" id="addressUser" name="realName" value=""/> 
+						</label>
+					</p>
+					<p class="mssg">
+						<label for="phone">	
+							<input type="hidden" name="uid" id="uid" value="" />
+							<input placeholder="联系电话" maxlength="11" required class="mobile" id="phone" type="text" name="mobile" value=""/>				
+						</label>
+					</p>
+					<p class="mssg">
+						<label for="addressPid" class="select_box">					
+							<span class="notice note_show province">所在省份</span>					
+							<select id="addressPid" class="addressPid" name="province">						
+								<option value="0"></option>												
+								<option value="北京市">北京市</option>												
+								<option value="上海市">上海市</option>												
+								<option value="天津市">天津市</option>												
+								<option value="重庆市">重庆市</option>												
+								<option value="河北省">河北省</option>												
+								<option value="山西省">山西省</option>												
+								<option value="河南省">河南省</option>											
+								<option value="辽宁省">辽宁省</option>											
+								<option value="吉林省">吉林省</option>											
+								<option value="黑龙江省">黑龙江省</option>										
+								<option value="内蒙古自治区">内蒙古自治区</option>									
+								<option value="江苏省">江苏省</option>										
+								<option value="山东省">山东省</option>										
+								<option value="安徽省">安徽省</option>											
+								<option value="浙江省">浙江省</option>											
+								<option value="福建省">福建省</option>											
+								<option value="湖北省">湖北省</option>											
+								<option value="湖南省">湖南省</option>											
+								<option value="广东省">广东省</option>											
+								<option value="广西壮族自治区">广西壮族自治区</option>											
+								<option value="江西省">江西省</option>												
+								<option value="四川省">四川省</option>											
+								<option value="海南省">海南省</option>											
+								<option value="贵州省">贵州省</option>											
+								<option value="云南省">云南省</option>										
+								<option value="西藏自治区">西藏自治区</option>											
+								<option value="陕西省">陕西省</option>										
+								<option value="甘肃省">甘肃省</option>										
+								<option value="青海省">青海省</option>										
+								<option value="宁夏回族自治区">宁夏回族自治区</option>								
+								<option value="新疆维吾尔自治区">新疆维吾尔自治区</option>								
+								<option value="海外">海外</option>										
+								<option value="香港特别行政区">香港特别行政区</option>								
+								<option value="澳门特别行政区">澳门特别行政区</option>								
+								<option value="台湾省">台湾省</option>										
+							</select>					
+								<span class="select_btn">请选择</span>				
+						</label>
+					</p>
+					<p class="mssg">
+						<label for="addressCid" class="select_box">			
+							<span class="notice note_show city">所在城市</span>		
+							<select id="addressCid" class="addressCid" name="city">		
+								<option value="0"></option>		
+								<option value="北京市">北京市</option>
+								<option value="北京市">上海市</option>												
+								<option value="北京市">天津市</option>												
+								<option value="北京市">重庆市</option>												
+								<option value="北京市">石家庄市</option>												
+								<option value="北京市">太原市</option>												
+								<option value="北京市">郑州市</option>												
+								<option value="北京市">沈阳市</option>												
+								<option value="北京市">长春市</option>												
+								<option value="北京市">哈尔滨市</option>												
+								<option value="北京市">呼和浩特市</option>												
+							</select>				
+							<span class="select_btn">请选择</span>
+						</label>
+					</p>
+					<p class="mssg">
+						<label for="addressDid" class="select_box">		
+							<span class="notice note_show area">所在地区</span>		
+							<select id="addressDid" class="addressDid" name="area">
+								<option value="0"></option>
+								<option value="朝阳区">朝阳区</option>
+								<option value="海淀区">海淀区</option>
+								<option value="西城区">西城区</option>
+								<option value="东城区">东城区</option>
+								<option value="丰台区">丰台区</option>
+								<option value="石景山区">石景山区</option>
+								<option value="房山区">房山区</option>
+								<option value="通州区">通州区</option>
+								<option value="大兴区">大兴区</option>
+								<option value="顺义区">顺义区</option>
+								<option value="怀柔区">怀柔区</option>
+								<option value="昌平区">昌平区</option>
+								<option value="平谷区">平谷区</option>
+								<option value="延庆县">延庆县</option>
+								<option value="密云县">密云县</option>
+								<option value="门头沟区">门头沟区</option>
+							</select>
+							<span class="select_btn">请选择</span>	
+						</label>
+					</p>
+					<p class="mssg">
+						<label for="addressStreet">			
+							<input id="addressStreet" class="addressStreet" type="text" name="address" placeholder="详细地址(必填)" value=""/>				
+						</label>
+					</p>
+					<p class="mssg">
+						<label for="addressPostcode">
+							<input id="addressPostcode" class="addressPostcode" type="text" name="postalCode" placeholder="邮政编码(选填)" value=""/>	
+						</label>
+					</p>
+					<div class="mssg">
+						<div class="set_wrap">
+							<span>设为默认地址</span>
+							<input type="checkbox" name="isDefault" id="is_default" value="">
+							<span class="switch_btn switch_uncheck">						
+								<i class="inner_circle"></i>					
+							</span>
+						</div>
+					</div>
+					<div class="remove_addr_btn">删除此地址</div>
+				</div>
+			</form>
+			<div class="edit_list" id="edit_list">
+				
+			</div>
+		</div>
+		<script src="assets/js/jquery-1.12.4.min.js" type="text/javascript"></script>
+		<script src="assets/js/amazeui.min.js" type="text/javascript"></script>
+		<script src="assets/js/shopping address.js" type="text/javascript"></script>
+		<script src="assets/js/template-web.js" type="text/javascript"></script>
+		<!--模板引擎-->
+		<script id="getList-tmpl" type="text/html">
+			{{each data}}
+			<li class="unit">
+				<div class="inner">
+					<span class="choose_btn choose"></span>
+					<div class="adrl_list inner_msg">
+						<p>
+							<span></span>
+							<span class="nick_name">{{$value.realName}}</span>
+							<span class="adrl_phone">{{$value.mobile}}</span>
+							<span class="default_note">默认</span>
+						</p>
+						<p class="add_detail">{{$value.province}}{{$value.city}}{{$value.area}}{{$value.address}}{{$value.postalCode}}</p>
+					</div>
+					<a href="javascript:void(0);">
+						<span class="edit_btn" data-id='{{$value._id}}'></span>
+					</a>
+				</div>
+			</li>
+			{{/each}}
+		</script>
+		<script  id="edit-tmpl" type="text/html">
+			<form id="addressList" class="addressList">
+				<div class="address-msg address_mb">
+					<div class="bg-top am-text-center"></div>
+					<p class="mssg">
+						<label for="addressUser"> 
+							<input type="text" placeholder="收货人" maxlength="6" required name="realName" value="{{realName}}"/> 
+						</label>
+					</p>
+					<p class="mssg">
+						<label for="phone">	
+							<input type="hidden" name="_id" id="mid" value="{{_id}}"/>
+							<input placeholder="联系电话" maxlength="11" required type="tel" name="mobile" value="{{mobile}}"/>				
+						</label>
+					</p>
+					<p class="mssg">
+						<label for="addressPid" class="select_box">					
+							<span class="notice note_show province">所在省份</span>					
+							<select class="addressPid" name="province">					
+								<option value="0"></option>												
+								<option value="北京市">北京市</option>												
+								<option value="上海市">上海市</option>												
+								<option value="天津市">天津市</option>												
+								<option value="重庆市">重庆市</option>												
+								<option value="河北省">河北省</option>												
+								<option value="山西省">山西省</option>												
+								<option value="河南省">河南省</option>											
+								<option value="辽宁省">辽宁省</option>											
+								<option value="吉林省">吉林省</option>											
+								<option value="黑龙江省">黑龙江省</option>										
+								<option value="内蒙古自治区">内蒙古自治区</option>									
+								<option value="江苏省">江苏省</option>										
+								<option value="山东省">山东省</option>										
+								<option value="安徽省">安徽省</option>											
+								<option value="浙江省">浙江省</option>											
+								<option value="福建省">福建省</option>											
+								<option value="湖北省">湖北省</option>											
+								<option value="湖南省">湖南省</option>											
+								<option value="广东省">广东省</option>											
+								<option value="广西壮族自治区">广西壮族自治区</option>											
+								<option value="江西省">江西省</option>												
+								<option value="四川省">四川省</option>											
+								<option value="海南省">海南省</option>											
+								<option value="贵州省">贵州省</option>											
+								<option value="云南省">云南省</option>										
+								<option value="西藏自治区">西藏自治区</option>											
+								<option value="陕西省">陕西省</option>										
+								<option value="甘肃省">甘肃省</option>										
+								<option value="青海省">青海省</option>										
+								<option value="宁夏回族自治区">宁夏回族自治区</option>								
+								<option value="新疆维吾尔自治区">新疆维吾尔自治区</option>								
+								<option value="海外">海外</option>										
+								<option value="香港特别行政区">香港特别行政区</option>								
+								<option value="澳门特别行政区">澳门特别行政区</option>								
+								<option value="台湾省">台湾省</option>										
+							</select>					
+								<span class="select_btn">请选择</span>				
+						</label>
+					</p>
+					<p class="mssg">
+						<label for="addressCid" class="select_box">			
+							<span class="notice note_show city">所在城市</span>		
+							<select name="city" class="addressCid">
+								<option value="0"></option>		
+								<option value="北京市">北京市</option>
+								<option value="北京市">上海市</option>												
+								<option value="北京市">天津市</option>												
+								<option value="北京市">重庆市</option>												
+								<option value="北京市">石家庄市</option>												
+								<option value="北京市">太原市</option>												
+								<option value="北京市">郑州市</option>												
+								<option value="北京市">沈阳市</option>												
+								<option value="北京市">长春市</option>												
+								<option value="北京市">哈尔滨市</option>												
+								<option value="北京市">呼和浩特市</option>												
+							</select>				
+							<span class="select_btn">请选择</span>
+						</label>
+					</p>
+					<p class="mssg">
+						<label for="addressDid" class="select_box">		
+							<span class="notice note_show area">所在地区</span>		
+							<select name="area" class="addressDid">
+								<option value="0"></option>
+								<option value="朝阳区">朝阳区</option>
+								<option value="海淀区">海淀区</option>
+								<option value="西城区">西城区</option>
+								<option value="东城区">东城区</option>
+								<option value="丰台区">丰台区</option>
+								<option value="石景山区">石景山区</option>
+								<option value="房山区">房山区</option>
+								<option value="通州区">通州区</option>
+								<option value="大兴区">大兴区</option>
+								<option value="顺义区">顺义区</option>
+								<option value="怀柔区">怀柔区</option>
+								<option value="昌平区">昌平区</option>
+								<option value="平谷区">平谷区</option>
+								<option value="延庆县">延庆县</option>
+								<option value="密云县">密云县</option>
+								<option value="门头沟区">门头沟区</option>
+							</select>
+							<span class="select_btn">请选择</span>	
+						</label>
+					</p>
+					<p class="mssg">
+						<label for="addressStreet">			
+							<input type="text" name="address" placeholder="详细地址(必填)" value="{{address}}"/>				
+						</label>
+					</p>
+					<p class="mssg">
+						<label for="addressPostcode">
+							<input type="text" name="postalCode" placeholder="邮政编码(选填)" value="{{postalCode}}"/>	
+						</label>
+					</p>
+					<div class="mssg">
+						<div class="set_wrap">
+							<span>设为默认地址</span>
+							<input type="checkbox" name="isDefault" value="">
+							<span class="switch_btn switch_uncheck">						
+								<i class="inner_circle"></i>					
+							</span>
+						</div>
+					</div>
+					<div class="remove_addr_btn" id="removeadd">删除此地址</div>
+				</div>
+			</form>	
+		</script>
+		 <!--data-id="{{$value._id}}"-->
+		<script type="text/javascript">
+			//获取收货地址列表 //获取sessionStorage储存的数据 
+			function getlist() {
+				var id = sessionStorage.uid;
+				$.getJSON('/goods/getUser', {account: id}, function(result) {
+					if(result.status) {
+						$('#uid').val(result.data);
+						$.post('/goods/getAddress', {uid: $('#uid').val()}, function(result) {
+							if(result.status) {
+								$('.addrShow').html('');
+								var html = template('getList-tmpl', result);
+								$('.addrShow').html(html)
+							};
+						});
+					};
+				});
+			};
+			getlist()
+			//新增地址
+			$('.novel').on("click", ".saves", function() {
+				var realName = $('.addressUser').val();
+				var phone = $('.mobile').val(); 
+				var address = $('.addressPid option:checked').text() + $('.addressCid option:checked').text() + $('.addressDid option:checked').text() + $('.addressStreet').val();
+				var data = $("#addressForm").serialize();
+				if(realName != "" && phone != "" && address != "") {
+					$.post("/goods/address/insert", data, function(result) {
+						if(result.status) {
+							alert(result.msg);
+							getlist();
+						} else {
+							alert(result.msg);
+						}
+					})
+				}
+			})
+			//编辑地址
+			$('.addrShow').on('click', '.edit_btn', function() {
+				var mid = $(this).data("id")
+				$.post("/goods/address/editaddr",{_id: mid},function(result) {
+					if (result.status) { 
+						var newhtml=template("edit-tmpl",result.data); 
+						$('#edit_list').html(newhtml);
+					}
+					$(".addressPid").change(function() {
+						$('.province').hide()
+					})
+					$("#addressList .addressCid").change(function() {
+						$('.city').hide()
+					})
+					$("#addressList .addressDid").change(function() {
+						$('.area').hide()
+					})
+				})
+				//删除地址 
+				$("#edit_list").on("click","#removeadd",function () {
+					$.post('/goods/remove',{_id:mid},function (result) {
+						console.log({_id:mid})
+						if (result.status) {
+							alert(result.msg)
+							getlist();
+						}
+					})
+				})
+			})
+			//修改地址信息
+			$('.novel').on('click', '.saves', function() { 
+				var data = $("#addressList").serialize(); 
+				$.post('/goods/address/editUpdate',data, function(result) {
+					if (result.status) { 
+						alert(result.msg)
+						$('#addressForm').show()
+						getlist()
+					}
+				}) 
+			})
+		</script>
+	</body>
+
+</html>
